@@ -1,0 +1,15 @@
+type: edu
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+  - name: test/ZookeeperTest.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/projects/229/stages/1150/implement#comment
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">Hyperskill</a>
+    to continue learning.
+  time: "Tue, 10 Mar 2026 07:40:55 UTC"
+record: -1
