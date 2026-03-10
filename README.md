@@ -1,7 +1,12 @@
 # 🎓 Hyperskill Projects
 
 Tento repozitář obsahuje projekty vypracované v rámci studia na vzdělávací platformě
-[Hyperskill.org](https://hyperskill.org).
+[Hyperskill.org](https://hyperskill.org).</br>
+Každá složka odpovídá jednomu projektu z Hyperskill.</br>
+Název složky odpovídá názvu projektu na platformě.</br>
+
+- 📁 [Coffee-Machine-Simulator](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Coffee%20Machine%20Simulator%20with%20Java/Coffee%20Machine%20Simulator%20with%20Java/task/src/machine/CoffeeMachine.java) - klikni pro zobrazení výsledného souboru projektu
+
 
 ## Co je Hyperskill?
 
@@ -21,15 +26,6 @@ prostřednictvím projektově orientovaných kurzů. Platforma je vyvíjena spol
 Aktuálně studuji kurzy zaměřené na:
 - ☕ **Java** — objektově orientované programování, kolekce, streamy
 - 🌱 **Spring Boot** — tvorba REST API a backend aplikací
-
-## Struktura repozitáře
-
-Každá složka odpovídá jednomu projektu z Hyperskillu.
-Název složky odpovídá názvu projektu na platformě.
-
-- 📁 Coffee-Machine-Simulator
-- 📁 Bulls-and-Cows
-- 📁 ...
 
 ## Technologie
 
