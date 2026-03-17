@@ -1,0 +1,14 @@
+type: edu
+files:
+  - name: src/lastpencil/Main.java
+    visible: true
+    learner_created: false
+  - name: test/LastPencilTest.java
+    learner_created: false
+feedback_link: https://hyperskill.org/projects/341/stages/2009/implement#comment
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">Hyperskill</a>
+    to continue learning.
+  time: "Tue, 17 Mar 2026 17:51:13 UTC"
+record: -1
