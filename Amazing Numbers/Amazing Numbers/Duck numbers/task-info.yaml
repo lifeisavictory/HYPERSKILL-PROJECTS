@@ -1,0 +1,35 @@
+type: edu
+files:
+  - name: src/numbers/Main.java
+    visible: true
+    learner_created: false
+  - name: test/util/Checker.java
+    visible: true
+    learner_created: false
+  - name: test/util/LinesChecker.java
+    visible: true
+    learner_created: false
+  - name: test/util/RegexChecker.java
+    visible: true
+    learner_created: false
+  - name: test/util/TextChecker.java
+    visible: true
+    learner_created: false
+  - name: test/util/UserProgram.java
+    visible: true
+    learner_created: false
+  - name: test/NumberProperty.java
+    visible: true
+    learner_created: false
+  - name: test/NumbersTest.java
+    visible: true
+    learner_created: false
+  - name: test/PropertiesChecker.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/projects/184/stages/932/implement#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sun, 22 Mar 2026 14:12:29 UTC"
+record: -1
