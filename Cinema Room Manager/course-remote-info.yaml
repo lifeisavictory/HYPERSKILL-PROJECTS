@@ -1,27 +1,24 @@
 hyperskill_project:
-  id: 33
-  ide_files: https://hyperskill.org/api/projects/33/additional-files/additional_files.json
+  id: 133
+  ide_files: https://hyperskill.org/api/projects/133/additional-files/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Fri, 03 Apr 2026 17:16:22 UTC"
+update_date: "Sun, 05 Apr 2026 06:16:54 UTC"
 stages:
-  - id: 175
-    step: 5329
+  - id: 709
+    step: 11105
     is_completed: true
-  - id: 176
-    step: 5330
+  - id: 710
+    step: 11106
     is_completed: true
-  - id: 177
-    step: 5331
+  - id: 711
+    step: 11107
     is_completed: true
-  - id: 178
-    step: 5332
+  - id: 712
+    step: 11108
     is_completed: true
-  - id: 179
-    step: 5333
-    is_completed: true
-  - id: 180
-    step: 5334
+  - id: 713
+    step: 11109
     is_completed: true
 topics:
   0:
@@ -34,18 +31,6 @@ topics:
     - title: Printing data
       theory_id: 3749
   1:
-    - title: "Write, compile, and run"
-      theory_id: 3739
-    - title: "Basic terms: JVM, JRE, JDK"
-      theory_id: 3499
-    - title: Operating systems
-      theory_id: 9704
-    - title: Command line overview
-      theory_id: 8977
-    - title: Parameters and options
-      theory_id: 9746
-    - title: Compile and run Java from CLI
-      theory_id: 3746
     - title: Types and variables
       theory_id: 3518
     - title: Comments
@@ -60,17 +45,6 @@ topics:
       theory_id: 3519
     - title: Integer types and operations
       theory_id: 3565
-    - title: Increment and decrement
-      theory_id: 5008
-    - title: Characters
-      theory_id: 3514
-    - title: String
-      theory_id: 3523
-    - title: Introduction to Linux
-      theory_id: 9526
-  2:
-    - title: IDE
-      theory_id: 10996
     - title: Floating-point types and operations
       theory_id: 3517
     - title: Boolean type and operations. True and false
@@ -79,6 +53,13 @@ topics:
       theory_id: 3512
     - title: Conditional statement
       theory_id: 3503
+  2:
+    - title: "Write, compile, and run"
+      theory_id: 3739
+    - title: IDE
+      theory_id: 10996
+    - title: Increment and decrement
+      theory_id: 5008
     - title: One-line condition with ternary operator
       theory_id: 3506
     - title: For loop
@@ -109,12 +90,18 @@ topics:
       theory_id: 3594
     - title: Iterating over arrays
       theory_id: 3602
+    - title: Characters
+      theory_id: 3514
+    - title: String
+      theory_id: 3523
     - title: Constants. Final variables
       theory_id: 7427
     - title: What is object-oriented programming
       theory_id: 3614
     - title: What are bugs
       theory_id: 5504
+    - title: Multidimensional array
+      theory_id: 1933
     - title: IntelliJ IDEA
       theory_id: 37202
     - title: Debugging overview
@@ -135,11 +122,14 @@ topics:
       theory_id: 4727
     - title: Static members
       theory_id: 3534
-  3:
-    - title: IntelliJ IDEA basics
-      theory_id: 5819
-    - title: Hyperskill Academy plugin
-      theory_id: 53354
-  5:
-    - title: Combining constants with enum
-      theory_id: 11514
+  4:
+    - title: Errors in programs
+      theory_id: 3536
+    - title: First glance at exceptions
+      theory_id: 3497
+    - title: NullPointerException
+      theory_id: 1945
+    - title: Formatted output
+      theory_id: 7046
+    - title: Array exceptions
+      theory_id: 1940
