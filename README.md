@@ -8,8 +8,15 @@ Název složky odpovídá názvu projektu na platformě.</br>
 </br>
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=java&logoColor=white)
+
+### Challenging
+- 📁 [Amazing Numbers](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/tree/main/Amazing%20Numbers/Amazing%20Numbers/task/src/numbers) - klikni pro zobrazení výsledných souborů projektu
+ 
+### Hard
 - 📁 [Last Pencil](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Last%20Pencil%20(Java)/Last%20Pencil%20(Java)/task/src/lastpencil/Main.java) - klikni pro zobrazení výsledného souboru projektu
 - 📁 [Coffee-Machine-Simulator](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Coffee%20Machine%20Simulator%20with%20Java/Coffee%20Machine%20Simulator%20with%20Java/task/src/machine/CoffeeMachine.java) - klikni pro zobrazení výsledného souboru projektu
+ 
+### Medium
 - 📁 [Zookeeper](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Zookeeper%20with%20Java/Zookeeper%20with%20Java/task/src/Main.java) - klikni pro zobrazení výsledného souboru projektu
 
 </br>
