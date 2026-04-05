@@ -13,6 +13,7 @@ Název složky odpovídá názvu projektu na platformě.</br>
 - 📁 [Amazing Numbers](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/tree/main/Amazing%20Numbers/Amazing%20Numbers/task/src/numbers) - klikni pro zobrazení výsledných souborů projektu
  
 ### Hard
+- 📁 [Cinema Room Manager](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Cinema%20Room%20Manager/Cinema%20Room%20Manager/task/src/cinema/Cinema.java) - klikni pro zobrazení výsledného souboru projektu
 - 📁 [Last Pencil](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Last%20Pencil%20(Java)/Last%20Pencil%20(Java)/task/src/lastpencil/Main.java) - klikni pro zobrazení výsledného souboru projektu
 - 📁 [Coffee-Machine-Simulator](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Coffee%20Machine%20Simulator%20with%20Java/Coffee%20Machine%20Simulator%20with%20Java/task/src/machine/CoffeeMachine.java) - klikni pro zobrazení výsledného souboru projektu
  
