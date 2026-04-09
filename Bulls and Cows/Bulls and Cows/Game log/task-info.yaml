@@ -1,0 +1,11 @@
+type: edu
+files:
+  - name: src/bullscows/Main.java
+    visible: true
+    learner_created: false
+  - name: test/BullsCowsTest.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/projects/53/stages/287/implement#comment
+status: Solved
+record: -1
