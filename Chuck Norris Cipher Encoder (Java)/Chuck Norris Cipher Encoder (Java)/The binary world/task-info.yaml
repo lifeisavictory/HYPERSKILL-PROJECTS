@@ -1,0 +1,14 @@
+type: edu
+files:
+  - name: src/chucknorris/Main.java
+    visible: true
+    learner_created: false
+  - name: test/ChuckNorrisTest.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/projects/293/stages/1537/implement#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 10 Apr 2026 17:46:37 UTC"
+record: -1
