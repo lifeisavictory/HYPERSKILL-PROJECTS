@@ -7,163 +7,207 @@ import java.util.Set;
 
 public class Main {
 
-
-    //TODO - prejmenovat promenne a metody na anglicke nazvy !!!
-
-
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         Service service = new Service();
         //GAMER, KTERY VLASTNI LODE A HERNI MATICE
-        Gamer gamer = new Gamer("Tomas");
+        Player player1 = new Player("Hansel");
+        Player player2 = new Player("Gretel");
+        Set<Player> players = new HashSet<>(
+                Set.of(player1, player2)
+        );
 
         /**
          * ZACATEK HERNIHO CYKLU
          */
-        service.naplnMatici(gamer.getGameMatrix());
-        service.naplnMatici(gamer.getAttackMatrix());
-        service.printGameField(gamer.getGameMatrix());
+        int count = 0;
+        for (Player player : players) {
+            count++;
+            System.out.println("Player " + count + ", place your ships on the game field");
+            service.fillMatrix(player.getGameMatrix());
+            service.fillMatrix(player.getAttackMatrix());
+            service.printGameField(player.getGameMatrix());
+            /**
+             * Pridani 1. lodi - Aircraft Carrier
+             */
+            System.out.println("Enter the coordinates of the Aircraft Carrier (5 cells):");
+            service.placeShip(player.getGameMatrix(), player.getAircraftCarrier(), player);
+            service.printGameField(player.getGameMatrix());
+            /**
+             * Pridani 2. lodi - Battleship
+             */
+            System.out.println();
+            System.out.println("Enter the coordinates of the Battleship (4 cells):");
+            service.placeShip(player.getGameMatrix(), player.getBattleship(), player);
+            service.printGameField(player.getGameMatrix());
+            /**
+             * Pridani 3. lodi - Submarine
+             */
+            System.out.println();
+            System.out.println("Enter the coordinates of the Submarine (3 cells):");
+            service.placeShip(player.getGameMatrix(), player.getSubmarine(), player);
+            service.printGameField(player.getGameMatrix());
+            /**
+             * Pridani 4. lodi - Cruiser
+             */
+            System.out.println();
+            System.out.println("Enter the coordinates of the Cruiser (3 cells):");
+            service.placeShip(player.getGameMatrix(), player.getCruiser(), player);
+            service.printGameField(player.getGameMatrix());
+            /**
+             * Pridani 5. lodi - Destroyer
+             */
+            System.out.println();
+            System.out.println("Enter the coordinates of the Destroyer (2 cells):");
+            service.placeShip(player.getGameMatrix(), player.getDestroyer(), player);
+            service.printGameField(player.getGameMatrix());
+            //PROMAZANI KONZOLE PRO DALSIHO HRACE
+            System.out.println("Press Enter and pass the move to another player");
+            clearConsole();
+        }
 
         /**
-         * Pridani 1. lodi - Aircraft Carrier
+         * START HRY - TASK 6
+         * GAME LOOP
          */
-        System.out.println("Enter the coordinates of the Aircraft Carrier (5 cells):");
-        service.zadejPoziciLodi(gamer.getGameMatrix(), gamer.getAircraftCarrier());
-        service.printGameField(gamer.getGameMatrix());
-        /**
-         * Pridani 2. lodi - Battleship
-         */
-        System.out.println();
-        System.out.println("Enter the coordinates of the Battleship (4 cells):");
-        service.zadejPoziciLodi(gamer.getGameMatrix(), gamer.getBattleship());
-        service.printGameField(gamer.getGameMatrix());
-        /**
-         * Pridani 3. lodi - Submarine
-         */
-        System.out.println();
-        System.out.println("Enter the coordinates of the Submarine (3 cells):");
-        service.zadejPoziciLodi(gamer.getGameMatrix(), gamer.getSubmarine());
-        service.printGameField(gamer.getGameMatrix());
-        /**
-         * Pridani 4. lodi - Cruiser
-         */
-        System.out.println();
-        System.out.println("Enter the coordinates of the Cruiser (3 cells):");
-        service.zadejPoziciLodi(gamer.getGameMatrix(), gamer.getCruiser());
-        service.printGameField(gamer.getGameMatrix());
-        /**
-         * Pridani 5. lodi - Destroyer
-         */
-        System.out.println();
-        System.out.println("Enter the coordinates of the Destroyer (2 cells):");
-        service.zadejPoziciLodi(gamer.getGameMatrix(), gamer.getDestroyer());
-        service.printGameField(gamer.getGameMatrix());
+        int turnCount = 0;
+        boolean isGameOver = false;
+        Player currentPlayer = null;
+        Player opponentPlayer = null;
+        int playerNumber = 0;
 
-        /**
-         * START HRY - TASK 3
-         */
-        System.out.println("The game starts!");
-        service.naplnMatici(gamer.getAttackMatrix());
-        service.printGameField(gamer.getAttackMatrix());
-        System.out.println("Take a shot!");
-        service.zautoc(gamer.getGameMatrix(), gamer.getAttackMatrix(), gamer);
+        do {
+            if (turnCount % 2 == 0) {
+                currentPlayer = player1;
+                opponentPlayer = player2;
+                playerNumber = 1;
+            } else {
+                currentPlayer = player2;
+                opponentPlayer = player1;
+                playerNumber = 2;
+            }
+            //jsou videt moje utoky na souperovu matici (moje attackMatrix)
+            service.printGameField(currentPlayer.getAttackMatrix());
+            System.out.println("---------------------");
+            //jsou videt jeho utoky na moji matici (moje gameMatrix)
+            service.printGameField(currentPlayer.getGameMatrix());
+            System.out.println("\nPlayer " + playerNumber + ", it's your turn:\n");
+            isGameOver = service.shoot(opponentPlayer.getGameMatrix(), currentPlayer.getAttackMatrix(), opponentPlayer, currentPlayer);
+            //PROMAZANI KONZOLE PRO DALSIHO HRACE
+            if (!isGameOver) {
+                System.out.println("Press Enter and pass the move to another player");
+                clearConsole();
+                turnCount++;
+            }
+        } while (!isGameOver);
+   }
 
 
-
+    /**
+     * PRIVATNI METODA NA MAZANI OBRAZOVKY
+     * jinak nez takto jsem obrazovku nedokazal "smazat"
+     * tohle jsem si nechal poradit AI, protoze mi to nechtelo projit testy na hyperskill
+     */
+    public static void clearConsole() {
+        try {
+            System.in.read(); // Jen počkáme, až uživatel cokoliv zmáčkne (Enter) a jdeme dál
+        } catch (Exception e) {
+            // Ignorujeme
+        }
     }
+
+
 }
 
 
 class Service {
 
-    private Scanner sc = new Scanner(System.in);
-    private Set<String> obsazenePozice = new HashSet<>();
-    private Set<String> zakazanePozice = new HashSet<>(); //vedle jiz stoji jina lod
-    private Set<String> hitnutePozice = new HashSet<>(); //zasahnute pozice
-    private Set<String> minutePozice = new HashSet<>(); //minul jsem
+    private final Scanner sc = new Scanner(System.in);
 
     public Service() {}
 
     /**
      * UTOK NA JEDNO POLICKO V MATICI
      *
-     * @param matrix
-     * @param attackMatrix
+     * @param opponentMatrix
+     * @param currentPlayerAttackMatrix
      */
-    public void zautoc(String[][] matrix, String[][] attackMatrix, Gamer gamer) {
+    public boolean shoot(String[][] opponentMatrix, String[][] currentPlayerAttackMatrix, Player opponentPlayer, Player currentPlayer) {
 
         String[] input;
         boolean isInputValid = false;
-        char vystrelChar = 'A';
-        int vystrelInt = 0;
-        char vystrel = '\0';
+        boolean isGameOver = false;
+        char shotChar = 'A';
+        char shotResult = '\0';
+        int shotInt = 0;
 
         do {
             input = sc.nextLine().trim().split(" ");
             //Rozklad UTOKU na PISMENO a CISLO
-            String prvniBunka = input[0];
-            vystrelChar = prvniBunka.charAt(0);
-            vystrelInt = Integer.parseInt(prvniBunka.substring(1));
+            String cell = input[0];
+            shotChar = cell.charAt(0);
+            shotInt = Integer.parseInt(cell.substring(1));
             //VALIDACE SOURADNIC VLOZENYCH UZIVATELEM PODLE VELIKOSTI HERNI MATICE
-            if (vystrelChar < 'A' || vystrelChar > 'J' || vystrelInt < 1 || vystrelInt > 10 || input.length > 1) {
+            if (shotChar < 'A' || shotChar > 'J' || shotInt < 1 || shotInt > 10 || input.length > 1) {
                 System.out.println("Error! You entered wrong coordinates! Try again:");
                 continue;
             }
             //PROJDU LODE A PODIVAM SE KTERA JE ZASAZENA
             //pokud je v obsazenePozice, ale neni u zadne lodi, uz se na policko strilelo
-            Ship zasahnutaLod = null;
-            if (obsazenePozice.contains("" + vystrelChar + vystrelInt)) {
+            Ship hitShip = null;
+            if (opponentPlayer.getOccupiedPositions().contains("" + shotChar + shotInt)) {
                 //najdeme lod, kterou jsme zasahli
-                if (gamer.getAircraftCarrier().getPositions().contains("" + vystrelChar + vystrelInt)) {
-                    zasahnutaLod = gamer.getAircraftCarrier();
-                } else if (gamer.getBattleship().getPositions().contains("" + vystrelChar + vystrelInt)) {
-                    zasahnutaLod = gamer.getBattleship();
-                } else if (gamer.getSubmarine().getPositions().contains("" + vystrelChar + vystrelInt)) {
-                    zasahnutaLod = gamer.getSubmarine();
-                } else if (gamer.getCruiser().getPositions().contains("" + vystrelChar + vystrelInt)) {
-                    zasahnutaLod = gamer.getCruiser();
-                } else if (gamer.getDestroyer().getPositions().contains("" + vystrelChar + vystrelInt)) {
-                    zasahnutaLod = gamer.getDestroyer();
+                if (opponentPlayer.getAircraftCarrier().getPositions().contains("" + shotChar + shotInt)) {
+                    hitShip = opponentPlayer.getAircraftCarrier();
+                } else if (opponentPlayer.getBattleship().getPositions().contains("" + shotChar + shotInt)) {
+                    hitShip = opponentPlayer.getBattleship();
+                } else if (opponentPlayer.getSubmarine().getPositions().contains("" + shotChar + shotInt)) {
+                    hitShip = opponentPlayer.getSubmarine();
+                } else if (opponentPlayer.getCruiser().getPositions().contains("" + shotChar + shotInt)) {
+                    hitShip = opponentPlayer.getCruiser();
+                } else if (opponentPlayer.getDestroyer().getPositions().contains("" + shotChar + shotInt)) {
+                    hitShip = opponentPlayer.getDestroyer();
                 }
             }
             //NASLEDUJE POKUD JSI MINUL - NIKDY TAM LOD NEBYLA
-            if (!obsazenePozice.contains("" + vystrelChar + vystrelInt)) {
-                vystrel = 'M';
-                setVystrelDoMatice(attackMatrix, vystrel, vystrelChar, vystrelInt);
-                setVystrelDoMatice(matrix, vystrel, vystrelChar, vystrelInt); //nastaveni "M" do matice vystrelu
-                minutePozice.add("" + vystrelChar + vystrelInt); //pridam do pozic ktere jsem minul
-                printGameField(attackMatrix);
-                System.out.println("You missed. Try again:");
-            } else if (zasahnutaLod != null) {
+            if (!opponentPlayer.getOccupiedPositions().contains("" + shotChar + shotInt)) {
+                shotResult = 'M';
+                setShot(currentPlayer.getAttackMatrix(), shotResult, shotChar, shotInt);
+                setShot(opponentMatrix, shotResult, shotChar, shotInt); //nastaveni "M" do matice vystrelu
+                System.out.println("You missed.");
+                isInputValid = true;
+            } else if (hitShip != null) {
                 //HIT - LOD TAM JE A ZATIM NEBYLO ZASAZENO
-                vystrel = 'X';
-                setVystrelDoMatice(attackMatrix, vystrel, vystrelChar, vystrelInt); //nastaveni X do matice vystrelu
-                setVystrelDoMatice(matrix, vystrel, vystrelChar, vystrelInt); //nastaveni X do matice zasahu
-                zasahnutaLod.deletePosition("" + vystrelChar + vystrelInt); //odstraneni pozice z lode
-                hitnutePozice.add("" + vystrelChar + vystrelInt); //pridam do pozic, ktere jsem hitnul
-                printGameField(attackMatrix);
-                if (gamer.getAircraftCarrier().getPositions().isEmpty() &&
-                        gamer.getBattleship().getPositions().isEmpty() &&
-                        gamer.getSubmarine().getPositions().isEmpty() &&
-                        gamer.getCruiser().getPositions().isEmpty() &&
-                        gamer.getDestroyer().getPositions().isEmpty()) {
+                shotResult = 'X';
+                setShot(currentPlayerAttackMatrix, shotResult, shotChar, shotInt); //nastaveni X do matice vystrelu
+                setShot(opponentMatrix, shotResult, shotChar, shotInt); //nastaveni X do matice zasahu
+                hitShip.deletePosition("" + shotChar + shotInt); //odstraneni pozice z lode
+                if (opponentPlayer.getAircraftCarrier().getPositions().isEmpty() &&
+                        opponentPlayer.getBattleship().getPositions().isEmpty() &&
+                        opponentPlayer.getSubmarine().getPositions().isEmpty() &&
+                        opponentPlayer.getCruiser().getPositions().isEmpty() &&
+                        opponentPlayer.getDestroyer().getPositions().isEmpty()) {
                     System.out.println("You sank the last ship. You won. Congratulations!");
                     isInputValid = true;
-                } else if (zasahnutaLod.getPositions().isEmpty()) {
-                    System.out.println("You sank a ship! Specify a new target:");
+                    isGameOver = true;
+                } else if (hitShip.getPositions().isEmpty()) {
+                    System.out.println("You sank a ship!");
+                    isInputValid = true;
                 } else {
-                    System.out.println("You hit a ship! Try again:");
+                    System.out.println("You hit a ship!");
+                    isInputValid = true;
                 }
             } else {
                 //HIT - LOD TAM JE POLICKO JIZ BYLO ZASAZENO
-                vystrel = 'X';
-                setVystrelDoMatice(attackMatrix, vystrel, vystrelChar, vystrelInt); //nastaveni X do matice vystrelu
-                setVystrelDoMatice(matrix, vystrel, vystrelChar, vystrelInt);
-                printGameField(attackMatrix);//nastaveni X do matice zasahu
-                System.out.println("You hit a ship! Try again:");
+                shotResult = 'X';
+                setShot(currentPlayerAttackMatrix, shotResult, shotChar, shotInt); //nastaveni X do matice vystrelu
+                setShot(opponentMatrix, shotResult, shotChar, shotInt); //nastaveni X do matice zasahu
+                System.out.println("You hit a ship!");
+                isInputValid = true;
             }
         } while (!isInputValid);
+        return isGameOver; //vraci true, pokud hrac uhadl posledni policko
     }
 
 
@@ -171,12 +215,12 @@ class Service {
      * NASTAVENI VYSTRELU DO HERNI MATICE - MATRIX
      *
      * @param matrix
-     * @param vystrel
-     * @param vystrelChar
-     * @param vystrelInt
+     * @param shotResult
+     * @param shotChar
+     * @param shotInt
      */
-    private void setVystrelDoMatice(String[][] matrix, char vystrel, char vystrelChar, int vystrelInt) {
-        matrix[vystrelChar - 'A'][vystrelInt - 1] = Character.toString(vystrel);
+    private void setShot(String[][] matrix, char shotResult, char shotChar, int shotInt) {
+        matrix[shotChar - 'A'][shotInt - 1] = Character.toString(shotResult);
     }
 
 
@@ -185,11 +229,11 @@ class Service {
      *
      * @param matrix
      */
-    public void zadejPoziciLodi(String[][] matrix, Ship ship) {
+    public void placeShip(String[][] matrix, Ship ship, Player player) {
 
         String[] input;
         boolean isInputValid = false;
-        int vypoctenaDelkaLodi = 0;
+        int calculatedShipLength = 0;
         char startChar = 'A';
         int startInt = 0;
         char endChar = 'A';
@@ -198,48 +242,48 @@ class Service {
         do {
             input = sc.nextLine().trim().split(" ");
             //PRVNI BUNKA - rozklad na PISMENO a CISLO
-            String prvniBunka = input[0];
-            startChar = prvniBunka.charAt(0);
-            startInt = Integer.parseInt(prvniBunka.substring(1));
+            String firstCell = input[0];
+            startChar = firstCell.charAt(0);
+            startInt = Integer.parseInt(firstCell.substring(1));
             //DRUHA BUNKA - rozklad na PISMENO a CISLO
-            String druhaBunka = input[1];
-            endChar = druhaBunka.charAt(0);
-            endInt = Integer.parseInt(druhaBunka.substring(1));
+            String secondCell = input[1];
+            endChar = secondCell.charAt(0);
+            endInt = Integer.parseInt(secondCell.substring(1));
             //PREHOZENI CISEL V TABULCE POKUD JE PRVNI MENSI - D5 A5
             if (startInt > endInt) {
-                int preklopeni = startInt;
+                int temp = startInt;
                 startInt = endInt;
-                endInt = preklopeni;
+                endInt = temp;
             }
             if (startChar > endChar) {
-                char preklopeni = startChar;
+                char temp = startChar;
                 startChar = endChar;
-                endChar = preklopeni;
+                endChar = temp;
             }
             //VYPOCET DELKY LODI A VALIDACE VZHLEDEM K PRIJATEMU DRUHU LODI [BATTLESHIP = 5, SUBMARINE = 2] atd
             //musim ji umet spocitat pro horizont i vertikal - do lodi se pocita i posledni pozice (nelze jen tupe odcitat)
-            vypoctenaDelkaLodi = (startChar == endChar)
+            calculatedShipLength = (startChar == endChar)
                     ? (Math.abs(startInt - endInt) + 1)
                     : (Math.abs(startChar - endChar) + 1);
-            if (!isValidDelkaLodi(vypoctenaDelkaLodi, ship.getName(), ship.getLength())) {
+            if (!isValidShipLength(calculatedShipLength, ship.getName(), ship.getLength())) {
                 continue;
             }
             //VALIDACE SOURADNIC VLOZENYCH UZIVATELEM PODLE VELIKOSTI HERNI MATICE
-            if (!isZadaneValidniSouradnice(startChar, startInt, endChar, endInt)) {
+            if (!isValidCoordinates(startChar, startInt, endChar, endInt)) {
                 continue;
             }
             //VALIDACE ZDA NOVA LOD NENI V ZAKAZANEM POLI
-            if (!nedotykaSeJineLodi(startChar, endChar, startInt, endInt)) {
+            if (!isNotTouchingOtherShip(startChar, endChar, startInt, endInt, player)) {
                 continue;
             }
             //NASTAVENI OBSAZENYCH POLI PRO DALSI ZADANI
-            setZakazanePoziceProUmisteniDalsiLodi(startChar, endChar, startInt, vypoctenaDelkaLodi);
+            setForbiddenPositions(startChar, endChar, startInt, calculatedShipLength, player);
             //NASTAVENI SOURADNIC V SETU KONKRETNI LODI
 
 
             isInputValid = true;
         } while (!isInputValid);
-        setLodDoMatice(matrix, ship,  vypoctenaDelkaLodi, startChar, startInt, endChar, endInt);
+        setShipToMatrix(matrix, ship,  calculatedShipLength, startChar, startInt, endChar, endInt, player);
     }
 
 
@@ -271,7 +315,7 @@ class Service {
      *
      * @param matrix
      */
-    public void naplnMatici(String[][] matrix) {
+    public void fillMatrix(String[][] matrix) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 matrix[i][j] = "~";
@@ -296,7 +340,7 @@ class Service {
      * @param endInt
      * @return
      */
-    private boolean isZadaneValidniSouradnice(char startChar, int startInt, char endChar, int endInt) {
+    private boolean isValidCoordinates(char startChar, int startInt, char endChar, int endInt) {
         //VALIDACE - POKUD NEJSOU PISMENA V RADKU NEBO SLOUPCI, NEPOKRACUJE SE
         if (startChar != endChar && startInt != endInt) {
             System.out.println("Error!");
@@ -324,28 +368,28 @@ class Service {
      * VLOZENI DO SETU OBSAZENE POZICE
      *
      * @param matrix
-     * @param delkaLodi
+     * @param shipLength
      * @param startChar
      * @param startInt
      * @param endChar
      * @param endInt
      */
-    private void setLodDoMatice(String[][] matrix, Ship ship, int delkaLodi, char startChar, int startInt, char endChar, int endInt) {
+    private void setShipToMatrix(String[][] matrix, Ship ship, int shipLength, char startChar, int startInt, char endChar, int endInt, Player player) {
         //ZADANI LODI DO POLE
         if (startChar == endChar) {
             //lod je v radku
-            for (int i = 0; i < delkaLodi; i++) {
+            for (int i = 0; i < shipLength; i++) {
                 //aby to bylo univerzalni pro radek i sloupec
                 matrix[startChar - 'A'][startInt - 1 + i] = "O";
                 ship.addPosition("" + startChar + (startInt + i));
-                obsazenePozice.add("" + startChar + (startInt + i));
+                player.getOccupiedPositions().add("" + startChar + (startInt + i));
             }
         } else {
             // lod je ve sloupci
-            for (int i = 0; i < delkaLodi; i++) {
+            for (int i = 0; i < shipLength; i++) {
                 matrix[startChar - 'A' + i][startInt - 1] = "O";
                 ship.addPosition("" + (char) (startChar + i) + startInt);
-                obsazenePozice.add("" + (char) (startChar + i) + startInt);
+                player.getOccupiedPositions().add("" + (char) (startChar + i) + startInt);
             }
         }
     }
@@ -354,13 +398,13 @@ class Service {
     /**
      * VALIDACE DELKY LODI
      *
-     * @param vypoctenaDelkaLodi
+     * @param calculatedShipLength
      * @param shipName
      * @param defaultSizeOfShip
      * @return
      */
-    private boolean isValidDelkaLodi(int vypoctenaDelkaLodi, String shipName, int defaultSizeOfShip) {
-        if (vypoctenaDelkaLodi != defaultSizeOfShip) {
+    private boolean isValidShipLength(int calculatedShipLength, String shipName, int defaultSizeOfShip) {
+        if (calculatedShipLength != defaultSizeOfShip) {
             System.out.println("Error! Wrong length of the " + shipName + "! Try again:");
             return false;
         }
@@ -377,17 +421,17 @@ class Service {
      * @param endInt
      * @return
      */
-    private boolean nedotykaSeJineLodi(char startChar, char endChar, int startInt, int endInt) {
+    private boolean isNotTouchingOtherShip(char startChar, char endChar, int startInt, int endInt, Player player) {
         if (startChar == endChar) {
             for (int i = startInt; i <= endInt; i++) {
-                if (zakazanePozice.contains("" + startChar + i)) {
+                if (player.getForbiddenPositions().contains("" + startChar + i)) {
                     System.out.println("Error! You placed it too close to another one. Try again:");
                     return false;
                 }
             }
         } else {
             for (char i = startChar; i <= endChar; i++) {
-                if (zakazanePozice.contains("" + i + startInt)) {
+                if (player.getForbiddenPositions().contains("" + i + startInt)) {
                     System.out.println("Error! You placed it too close to another one. Try again:");
                     return false;
                 }
@@ -410,21 +454,21 @@ class Service {
      * @param startChar
      * @param endChar
      * @param startInt
-     * @param vypoctenaDelkaLodi
+     * @param calculatedShiplength
      */
-    private void setZakazanePoziceProUmisteniDalsiLodi(char startChar, char endChar, int startInt, int vypoctenaDelkaLodi) {
+    private void setForbiddenPositions(char startChar, char endChar, int startInt, int calculatedShiplength, Player player) {
         char newStartChar = (char) (startChar - 1);
         int newStartInt = startInt - 1;
         if (startChar == endChar) {
-            for (char radek = (char) (startChar - 1); radek <= (char) (startChar + 1); radek++) {
-                for (int sloupec = newStartInt; sloupec <= startInt + vypoctenaDelkaLodi; sloupec++) {
-                    zakazanePozice.add("" + radek + sloupec);
+            for (char row = (char) (startChar - 1); row <= (char) (startChar + 1); row++) {
+                for (int col = newStartInt; col <= startInt + calculatedShiplength; col++) {
+                    player.getForbiddenPositions().add("" + row + col);
                 }
             }
         } else {
-            for (int sloupec = startInt - 1; sloupec <= startInt + 1; sloupec++) {
-                for (char radek = newStartChar; radek <= (char) (startChar + vypoctenaDelkaLodi); radek++) {
-                    zakazanePozice.add("" + radek + sloupec);
+            for (int col = startInt - 1; col <= startInt + 1; col++) {
+                for (char row = newStartChar; row <= (char) (startChar + calculatedShiplength); row++) {
+                    player.getForbiddenPositions().add("" + row + col);
                 }
             }
         }
@@ -434,12 +478,15 @@ class Service {
 }
 
 
-class Gamer {
+class Player {
 
     private String name;
     //HRAC MA NASLEDUJICI MATICE
     private String[][] gameMatrix = new String[10][10];
     private String[][] attackMatrix = new String[10][10];
+    //HASHSETY PRO KONTROLU HIT A MINUL
+    private Set<String> occupiedPositions = new HashSet<>(); //obsazene pozice - stoji na nich lode
+    private Set<String> forbiddenPositions = new HashSet<>(); //pozice kolem lodi kam se nesmi umistit dalsi lod
     //HRAC MA NASLEDUJICI LODE
     private Ship aircraftCarrier = new Ship("Aircraft Carrier", 5);
     private Ship battleship = new Ship("Battleship", 4);
@@ -447,7 +494,7 @@ class Gamer {
     private Ship cruiser = new Ship("Cruiser", 3);
     private Ship destroyer = new Ship("Destroyer", 2);
 
-    public Gamer(String name) {
+    public Player(String name) {
         this.name = name;
     }
 
@@ -457,6 +504,14 @@ class Gamer {
 
     public String[][] getAttackMatrix() {
         return attackMatrix;
+    }
+
+    public Set<String> getOccupiedPositions() {
+        return occupiedPositions;
+    }
+
+    public Set<String> getForbiddenPositions() {
+        return forbiddenPositions;
     }
 
     public String getName() {
