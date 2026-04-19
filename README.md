@@ -32,7 +32,6 @@ Název složky odpovídá názvu projektu na platformě.</br>
 - 📁 [Zookeeper](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Zookeeper%20with%20Java/Zookeeper%20with%20Java/task/src/Main.java) - klikni pro zobrazení posledního úkolu projektu
    - (rozsah 10 hodin - 4 postupné úkoly)
  
-### Easy
 
 </br>
 
