@@ -11,6 +11,8 @@ Název složky odpovídá názvu projektu na platformě.</br>
 
 
 ### Challenging
+- 📁 [Battleship with Java](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/tree/main/Battleship%20with%20Java/Battleship%20with%20Java/task/src/battleship) -rozpracováno task 5/6
+   - (rozsah 21 hodin - 6 postupných úkolů)
 - 📁 [Chuck Norris Cipher Encoder (Java)](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Chuck%20Norris%20Cipher%20Encoder%20(Java)/Chuck%20Norris%20Cipher%20Encoder%20(Java)/task/src/chucknorris/Main.java) - klikni pro zobrazení posledního úkolu projektu
    - (rozsah 18 hodin - 5 postupných úkolů)
 - 📁 [Bulls And Cows](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/tree/main/Bulls%20and%20Cows/Bulls%20and%20Cows/task/src/bullscows) - klikni pro zobrazení posledního úkolu projektu
