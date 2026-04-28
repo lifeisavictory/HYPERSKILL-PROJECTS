@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaFilter Camera</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>InstaFilter Camera</h1>
+        
+        <div class="video-wrapper">
+            <video id="video" autoplay playsinline></video>
+            <canvas id="canvas"></canvas>
+            <button id="flipBtn" class="flip-btn" title="Flip Camera">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M7 16l-4-4 4-4v3h8V8l4 4-4 4v-3H7v3z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="controls">
+            <div class="filter-list" id="filterList">
+                <button class="filter-btn active" data-filter="none">Normal</button>
+                <button class="filter-btn" data-filter="grayscale(100%)">Clarendon</button>
+                <button class="filter-btn" data-filter="sepia(50%) contrast(120%) brightness(110%)">Gingham</button>
+                <button class="filter-btn" data-filter="sepia(30%) contrast(110%) brightness(110%) saturate(130%)">Moon</button>
+                <button class="filter-btn" data-filter="contrast(150%) saturate(150%)">Lark</button>
+                <button class="filter-btn" data-filter="hue-rotate(-10deg) contrast(110%)">Reyes</button>
+                <button class="filter-btn" data-filter="sepia(20%) brightness(120%) contrast(90%)">Juno</button>
+                <button class="filter-btn" data-filter="grayscale(100%) contrast(120%)">Willow</button>
+                <button class="filter-btn" data-filter="sepia(100%) hue-rotate(-30deg) saturate(120%)">Valencia</button>
+                <button class="filter-btn" data-filter="contrast(120%) saturate(120%) sepia(30%)">X-Pro II</button>
+            </div>
+
+            <div class="extra-controls">
+                <button id="pixelateToggle" class="toggle-btn">Pixelate: OFF</button>
+                <button id="halftoneToggle" class="toggle-btn">Halftone: OFF</button>
+            </div>
+
+            <div id="pixelControls" class="pixel-controls" style="display: none;">
+                <label for="pixelSize">Pixel Size: <span id="pixelSizeValue">10</span>px</label>
+                <input type="range" id="pixelSize" min="2" max="50" value="10">
+            </div>
+
+
+            <div id="halftoneControls" class="pixel-controls" style="display: none;">
+                <label for="halftoneSpacing">Dot Spacing: <span id="halftoneSpacingValue">10</span>px</label>
+                <input type="range" id="halftoneSpacing" min="4" max="30" value="10">
+            </div>
+        </div>
+        
+        <div class="status" id="status">Starting camera...</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
