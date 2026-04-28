@@ -31,8 +31,16 @@ Název složky odpovídá názvu projektu na platformě.</br>
 ### Medium
 - 📁 [Zookeeper](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/blob/main/Zookeeper%20with%20Java/Zookeeper%20with%20Java/task/src/Main.java) - klikni pro zobrazení posledního úkolu projektu
    - (rozsah 10 hodin - 4 postupné úkoly)
- 
 
+</br>
+</br>
+
+## AI Powered
+- 📁 [Camera Effects with Junie](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/tree/main/AI-Powered%20Camera%20Effects%20with%20Junie)
+   - (rozsah 1 hodina - 4 postupné úkoly)
+
+
+</br>
 </br>
 
 
