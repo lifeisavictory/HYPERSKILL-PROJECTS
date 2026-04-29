@@ -1,9 +1,9 @@
 # 🎓 Hyperskill Projects
 
-Tento repozitář obsahuje projekty vypracované v rámci studia na vzdělávací platformě
-[Hyperskill.org](https://hyperskill.org).</br>
-Každá složka odpovídá jednomu projektu z Hyperskill.</br>
-Název složky odpovídá názvu projektu na platformě.</br>
+This repository contains projects completed as part of studies on the educational platform
+[Hyperskill.org](https://hyperskill.org/).</br>
+Each folder corresponds to one Hyperskill project.</br>
+The folder name matches the project name on the platform.</br>
 
 </br>
 
