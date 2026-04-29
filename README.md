@@ -35,7 +35,7 @@ Název složky odpovídá názvu projektu na platformě.</br>
 
 ## AI Powered
 - 📁 [Camera Effects with Junie](https://github.com/lifeisavictory/HYPERSKILL-PROJECTS/tree/main/AI-Powered%20Camera%20Effects%20with%20Junie)
-   - (rozsah 1 hodina - 4 postupné úkoly) ![AI Generated](https://img.shields.io/badge/Generov%C3%A1no%20AI-8A2BE2?style=flat) ![HTML](https://img.shields.io/badge/HTML-E34C26?style=flat&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS-264de4?style=flat&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-f0db4f?style=flat&logo=javascript&logoColor=black)
+   - (rozsah 1 hodina - 4 postupné úkoly) ![AI Generated](https://img.shields.io/badge/AI%20Generated-8A2BE2?style=flat) ![HTML](https://img.shields.io/badge/HTML-E34C26?style=flat&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS-264de4?style=flat&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-f0db4f?style=flat&logo=javascript&logoColor=black)
 
 
 
